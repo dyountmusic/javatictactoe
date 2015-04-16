@@ -15,6 +15,7 @@ public class TurtleTicTacToe {
     Turtle tom = new Turtle(w);
     // Draw the game board
     tom.drawBoard();
+    // Flip a coin to see who goes first
     boolean userTurn = coinFlip();
     
     // Create variables to store the gameplay
