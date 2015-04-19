@@ -127,12 +127,10 @@ public class TurtleTicTacToe {
           // Get a number between 1-9
           
           int jarvisNumber = (int)(Math.random()*10);
-          System.out.println("Jarvis has chosen " + jarvisNumber);
           
           if (jarvisNumber > 9 || jarvisNumber < 1)
           {
             jarvisNumber = (int)(Math.random()*10);
-            System.out.println("Rerolling " + jarvisNumber);
           }
           
           System.out.println("Jarvis has chosen space " + jarvisNumber);
