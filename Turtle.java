@@ -1,17 +1,6 @@
 import java.util.*;
 import java.awt.*;
 
-/**
- * Class that represents a turtle which is similar to a Logo turtle.
- * This class inherts from SimpleTurtle and is for students
- * to add methods to.
- *
- * Copyright Georgia Institute of Technology 2004
- * @author Barb Ericson ericson@cc.gatech.edu
- * 
- * MAXIMILLIAN STEELE's COPY 2015
- * 
- */
 public class Turtle extends SimpleTurtle
 {
   ////////////////// constructors ///////////////////////
@@ -128,6 +117,19 @@ public class Turtle extends SimpleTurtle
   public void drawHexagon()
     
   {
+    this.penUp();
+    this.setHeading(0);
+    this.turn(90);
+    this.forward(107);
+    this.setHeading(0);
+    
+    this.turn(180);
+    this.forward(30);
+    this.turn(180);
+    
+    this.penDown();
+    
+    this.turn(120);
     this.forward(50);
     this.turn(60);
     this.forward(50);
@@ -139,7 +141,24 @@ public class Turtle extends SimpleTurtle
     this.forward(50);
     this.turn(60);
     this.forward(50);
+    
+    this.setHeading(0);
+  }
+  
+  public void drawHex()
+  {
     this.turn(60);
+    this.forward(50);
+    this.turn(60);
+    this.forward(50);
+    this.turn(60);
+    this.forward(50);
+    this.turn(60);
+    this.forward(50);
+    this.turn(60);
+    this.forward(50);
+    this.turn(60);
+    this.forward(50);
   }
   
   public void hexReset()
@@ -693,20 +712,11 @@ public class Turtle extends SimpleTurtle
     this.forward(113);
     this.penUp();
     
-    
-    
-    
-   
-    
-    
-   
-         
-    
   }
   
   public void drawBoard()
- {
- 
+  {
+    
     this.setPenColor(Color.black);
     this.penUp();
     this.moveTo(0,160);
@@ -733,14 +743,7 @@ public class Turtle extends SimpleTurtle
     this.penUp();
     this.hide();
     
-    
-    
-    
-    
-    
-    
-  
-}
+  }
 }
 
 // this } is the end of class Turtle, put all new methods before this
