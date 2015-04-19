@@ -15,21 +15,30 @@ public class TurtleTicTacToe {
     Turtle tom = new Turtle(w);
     // Draw the game board
     tom.drawBoard();
-    // Flip a coin to see who goes first
-    boolean userTurn = coinFlip();
     
-    // Create variables to store the gameplay
-    boolean winner = false;
-    boolean tie = false;
-    
+    // objects to recieve user input
     Scanner scanner = new Scanner(System.in);
     int myInt = 0;
     
-    // Keep track of whose turn it is
-    // X is always the Player
-    // O is always Jarvis
-    char whoseTurn = 'X';
-  
+    // filling the coords array
+    fillCoords(w);
+    
+    for (int i = 0; i < 8; i++)
+    {
+      for (int j = 0; j < 2; j++)
+      {
+        System.out.println(coordsArray[i][j]);
+      }
+    }
+    
+    // Flip a coin to see who goes first
+    boolean userTurn = coinFlip();
+    boolean winner = false;
+    boolean tie = false;
+    
+    System.out.println(movesArray);
+    System.out.println(coordsArray);
+    
     while (winner == false && tie == false)
     {
       int i = 0;
@@ -155,6 +164,52 @@ public class TurtleTicTacToe {
       tom.forward(3);
       Thread.sleep(30);
     }
+  }
+  
+  public static void fillCoords(World w)
+  {
+    
+    // getting the mathematical measurements of the divided world
+    int height = (int) (w.getHeight()/3);
+    int heightDoubled = (int) (w.getHeight()/3 + w.getHeight()/3);
+    int width = (int) (w.getWidth()/3);
+    int widthDoubled = (int) (w.getWidth()/3 + w.getWidth()/3);
+    
+    // Space 1
+    coordsArray[0][0] = 0;
+    coordsArray[0][1] = 0;
+    
+    // Space 2
+    coordsArray[1][0] = width;
+    coordsArray[1][1] = 0;
+    
+    // Space 3
+    coordsArray[2][0] = widthDoubled;
+    coordsArray[2][1] = 0;
+    
+    // Space 4
+    coordsArray[3][0] = 0;
+    coordsArray[3][1] = height;
+    
+    // Space 5
+    coordsArray[4][0] = width;
+    coordsArray[4][1] = height;
+    
+    // Space 6
+    coordsArray[5][0] = widthDoubled;
+    coordsArray[5][1] = height;
+    
+    // Space 7
+    coordsArray[6][0] = 0;
+    coordsArray[6][1] = heightDoubled;
+    
+    // Space 8
+    coordsArray[7][0] = width;
+    coordsArray[7][1] = heightDoubled;
+    
+    // Space 9
+    coordsArray[8][0] = widthDoubled;
+    coordsArray[8][1] = heightDoubled;
   }
 
 }
