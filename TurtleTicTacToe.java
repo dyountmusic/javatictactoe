@@ -32,9 +32,6 @@ public class TurtleTicTacToe {
     boolean winner = false;
     boolean tie = false;
     
-    System.out.println(movesArray);
-    System.out.println(coordsArray);
-    
     while (winner == false && tie == false)
     {
       int i = 0;
