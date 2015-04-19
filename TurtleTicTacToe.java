@@ -182,67 +182,78 @@ public class TurtleTicTacToe {
           
           System.out.println("Jarvis has chosen space " + jarvisNumber);
           switch (jarvisNumber)  {
-            case 1: 
-              if(movesArray[0][0] == 'o'|| movesArray[0][0] == 'x')
-            {
-              System.out.println("Jarvis has been a bad AI");
-              
-            }
+            case 1:
               movesArray[0][0] = 'x';
               tom.penUp();
               tom.moveTo(coordsArray[0][0], coordsArray[0][1]);
               tom.penDown();
-            tom.drawX();
-            break;
-            
-            case 2: movesArray[0][1] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[1][0], coordsArray[1][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 3: movesArray[0][2] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[2][0], coordsArray[2][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 4: movesArray[1][0] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[3][0], coordsArray[3][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 5: movesArray[1][1] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[4][0], coordsArray[4][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 6: movesArray[1][2] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[5][0], coordsArray[5][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 7: movesArray[2][0] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[6][0], coordsArray[6][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 8: movesArray[2][1] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[7][0], coordsArray[7][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
-            case 9: movesArray[2][2] = 'x';
-            tom.penUp();
-            tom.moveTo(coordsArray[8][0], coordsArray[8][1]);
-            tom.penDown();
-            tom.drawX();
-            break;
+              tom.drawX();
+              break;
+              
+            case 2: 
+              movesArray[0][1] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[1][0], coordsArray[1][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 3: 
+              movesArray[0][2] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[2][0], coordsArray[2][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 4: 
+              movesArray[1][0] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[3][0], coordsArray[3][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 5: 
+              movesArray[1][1] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[4][0], coordsArray[4][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 6:
+              movesArray[1][2] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[5][0], coordsArray[5][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 7: 
+              movesArray[2][0] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[6][0], coordsArray[6][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 8: 
+              movesArray[2][1] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[7][0], coordsArray[7][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
+            case 9: 
+              movesArray[2][2] = 'x';
+              tom.penUp();
+              tom.moveTo(coordsArray[8][0], coordsArray[8][1]);
+              tom.penDown();
+              tom.drawX();
+              break;
+              
           }
           
           userTurn = true;
