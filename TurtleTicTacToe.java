@@ -121,6 +121,22 @@ public class TurtleTicTacToe {
           // Get Computer Turn
           System.out.println("Jarvis is thinking...");
           Thread.sleep(500);
+          
+          // Begin Jarvis Logic
+          
+          // Get a number between 1-9
+          
+          int jarvisNumber = (int)(Math.random()*10);
+          System.out.println("Jarvis has chosen " + jarvisNumber);
+          
+          if (jarvisNumber > 9 || jarvisNumber < 1)
+          {
+            jarvisNumber = (int)(Math.random()*10);
+            System.out.println("Rerolling " + jarvisNumber);
+          }
+          
+          System.out.println("Jarvis has chosen space " + jarvisNumber);
+          
           userTurn = true;
           i++;
         }
