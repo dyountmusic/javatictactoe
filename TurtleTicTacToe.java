@@ -1,369 +1,787 @@
-import java.util. *;
-import java.awt. *;
+//TERRENCE WELLS~~~~~~~~~~~~~~~~~~~~~ <--
+import java.util.*;
+import java.awt.*;
 
-public class TurtleTicTacToe {
-  
-  // Creating Arrays
+//Tic Tac Toe
+public class TurtleTicTacToe 
+{
   private static char[][] movesArray = new char[3][3];
-  private static int[][] coordsArray = new int [9][2];
- 
-
-  public static void main(String[] args) throws InterruptedException {
-
-    // Creating the world
-    World w = new World();
-    // Creating the turtle
-    Turtle tom = new Turtle(w);
-    // Draw the game board
-    tom.drawBoard();
-    tom.show();
-    tom.setPenColor(Color.black);
-    tom.penDown();
-    
-    
-    // objects to recieve user input
-    Scanner scanner = new Scanner(System.in);
-    int myInt = 0;
-    
-    // filling the coords array
-    fillCoords(w);
-    
-    // Flip a coin to see who goes first
-    boolean userTurn = coinFlip();
-    boolean winner = false;
-    boolean tie = false;
-    
-    while (winner == false && tie == false)
-    {
-      int i = 0;
-      while (i < 9)
-      {
-        // THIS IS THE USER'S TURN LOGIC
-        if (userTurn)
-        {
-          
-          System.out.print("Your turn... pick between spots: ");
-          if(movesArray[0][0] != 'x'){
-            System.out.print("1, ");
-          }
-          if(movesArray[0][1] != 'x'){
-            System.out.print("2,");
-          }
-          if(movesArray[0][2] != 'x'){
-            System.out.print(" 3");
-          }
-          if(movesArray[1][0] != 'x'){
-            System.out.print(", 4");
-          }
-          if(movesArray[1][1] != 'x'){
-            System.out.print(", 5");
-          }
-          if(movesArray[1][2] != 'x'){
-            System.out.print(", 6");
-          }
-          if(movesArray[2][0] != 'x'){
-            System.out.print(", 7");
-          }
-          if(movesArray[2][1] != 'x'){
-            System.out.print(", 8");
-          }
-          if(movesArray[2][2] != 'x'){
-            System.out.print(", 9");
-          }
-          
-          // Get the user's number
-          myInt = scanner.nextInt();
-          
-          switch (myInt)  {
-            case 1: 
-              movesArray[0][0] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[0][0], coordsArray[0][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 2: 
-              movesArray[0][1] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[1][0], coordsArray[1][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 3: 
-              movesArray[0][2] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[2][0], coordsArray[2][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 4: 
-              movesArray[1][0] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[3][0], coordsArray[3][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 5: 
-              movesArray[1][1] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[4][0], coordsArray[4][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 6: 
-              movesArray[1][2] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[5][0], coordsArray[5][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 7: 
-              movesArray[2][0] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[6][0], coordsArray[6][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 8: 
-              movesArray[2][1] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[7][0], coordsArray[7][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-              
-            case 9: 
-              movesArray[2][2] = 'o';
-              tom.penUp();
-              tom.moveTo(coordsArray[8][0], coordsArray[8][1]);
-              tom.penDown();
-              tom.drawHexagon();
-              break;
-            
-          }
-          
-          //  Place it into the coordsArra
-          userTurn = false;
-          
-          if (winner)
-          {
-            String win = "You win!";
-            System.out.println(win);
-          }
-          
-          i++;
-        }
-        
-        // THIS IS THE COMPUTER'S TURN LOGIC
-        if (!userTurn)
-        {
-          // Get Computer Turn
-          System.out.println("Jarvis is thinking...");
-          Thread.sleep(500);
-          
-          // Begin Jarvis Logic
-          
-          // Get a number between 1-9
-          
-          int jarvisNumber = (int)(Math.random()*10);
-          
-          
-          if (jarvisNumber > 9 || jarvisNumber < 1)
-          {
-            jarvisNumber = (int)(Math.random()*10);
-            
-          }
-          
-          System.out.println("Jarvis has chosen space " + jarvisNumber);
-          switch (jarvisNumber)  {
-            case 1:
-              movesArray[0][0] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[0][0], coordsArray[0][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 2: 
-              movesArray[0][1] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[1][0], coordsArray[1][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 3: 
-              movesArray[0][2] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[2][0], coordsArray[2][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 4: 
-              movesArray[1][0] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[3][0], coordsArray[3][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 5: 
-              movesArray[1][1] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[4][0], coordsArray[4][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 6:
-              movesArray[1][2] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[5][0], coordsArray[5][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 7: 
-              movesArray[2][0] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[6][0], coordsArray[6][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 8: 
-              movesArray[2][1] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[7][0], coordsArray[7][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-            case 9: 
-              movesArray[2][2] = 'x';
-              tom.penUp();
-              tom.moveTo(coordsArray[8][0], coordsArray[8][1]);
-              tom.penDown();
-              tom.drawX();
-              break;
-              
-          }
-          
-          userTurn = true;
-          i++;
-        }
-      }
-      
-      // TODO Check for a tie or a winner
-      
-      if (tie == true)
-      {
-        System.out.println("Game over. Tie");
-      } else {
-        return;
-      }
-    }
-  }
-  
-  public static boolean coinFlip()
+  private static int[][] coordsArray = new int[9][2];
+  private static int[] moves = new int[9];
+  public static int myInt;
+  public static void main(String[] args) throws InterruptedException
   {
-    if(Math.random()<.5)
+
+    int i;
+    
+    coordsArray[0][0] = 100;
+    coordsArray[0][1] = 100;
+    coordsArray[1][0] = 200;
+    coordsArray[1][1] = 100;
+    coordsArray[2][0] = 300;
+    coordsArray[2][1] = 100;
+    coordsArray[3][0] = 100;
+    coordsArray[3][1] = 200;
+    coordsArray[4][0] = 200;
+    coordsArray[4][1] = 200;
+    coordsArray[5][0] = 300;
+    coordsArray[5][1] = 200;
+    coordsArray[6][0] = 100;
+    coordsArray[6][1] = 300;
+    coordsArray[7][0] = 200;
+    coordsArray[7][1] = 300;
+    coordsArray[8][0] = 300;
+    coordsArray[8][1] = 300;
+    
+    //Create World
+    World w = new World(500,500);
+    //Create Turtle
+    Turtle t = new Turtle(w);
+    //Create Board
+    t.drawBoard();
+    System.out.println("WELCOME TO TIC TAC TOE by: TJ Wells");
+    Thread.sleep(300);
+    //Who go's First
+    if(Math.random()>.5)
     {
-      System.out.println("Jarvis goes first.");
-      int randomNumber = 1 + (int)(Math.random() * (9));
-      return false;
+      i = 1;
     }
     else
     {
-      System.out.println("You go first!");
+      i = 2;
+    }
+    
+    for(int x=0; x < 9;x++)
+    {
+      if( i % 2 == 0 )
+      {
+        
+        Thread.sleep(500);
+        System.out.println("--> Computer's Turn <--");
+        
+          
+       compTurn(t, i); 
+   
+      }
+      
+      if( i % 2 == 1 )
+      {
+        Thread.sleep(500);
+        printAvailable();
+        System.out.println("  It's your turn...");
+        usersTurn(t, i);
+
+      }
+      if(whoWon(t))
+      {
+        return;
+      }
+      
+      
+      
+
+      i++;
+    }
+      System.out.println("You tied.  GAME OVER");
+
+  }
+
+  
+  
+  
+  
+  
+  
+  public static void usersTurn(Turtle t, int turn)
+  {
+    int goodValue = 1;
+    while (goodValue == 1){
+    Scanner scanner = new Scanner(System.in);
+    myInt = scanner.nextInt();
+    
+
+   switch (myInt)
+    {
+      case 1:
+        if (movesArray[0][0] == 'x' || movesArray[0][0] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else{
+        
+       goodValue = 2;
+        t.drawX(coordsArray[0][0],coordsArray[0][1]);
+        
+        movesArray[0][0] = 'x';
+        break;
+        
+        }
+     
+         
+        
+        case 2:
+        if (movesArray[1][0] == 'x' || movesArray[1][0] == 'o')
+        {
+          
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[1][0],coordsArray[1][1]);
+        
+        movesArray[1][0] = 'x';
+        break;
+        
+        }
+        
+        case 3:
+        if (movesArray[2][0] == 'x' || movesArray[2][0] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[2][0],coordsArray[2][1]);
+        
+        movesArray[2][0] = 'x';
+        break;
+        
+        }
+        
+        case 4:
+        if (movesArray[0][1] == 'x' || movesArray[0][1] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[3][0],coordsArray[3][1]);
+        
+        movesArray[0][1] = 'x';
+        break;
+        
+        }
+        
+        
+        case 5:
+        if (movesArray[1][1] == 'x' || movesArray[1][1] == 'o')
+        
+          {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[4][0],coordsArray[4][1]);
+        
+        movesArray[1][1] = 'x';
+        break;
+        
+        }
+        
+        case 6:
+        if (movesArray[2][1] == 'x' || movesArray[2][1] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[5][0],coordsArray[5][1]);
+        
+        movesArray[2][1] = 'x';
+        break;
+        
+        }
+        
+        case 7:
+        if (movesArray[0][2] == 'x' || movesArray[0][2] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[6][0],coordsArray[6][1]);
+        
+        movesArray[0][2] = 'x';
+        break;
+        
+        }
+        
+        case 8:
+        if (movesArray[1][2] == 'x' || movesArray[1][2] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[7][0],coordsArray[7][1]);
+        
+        movesArray[1][2] = 'x';
+        break;
+        
+        }
+        case 9:
+        if (movesArray[2][2] == 'x' || movesArray[2][2] == 'o')
+        {
+        System.out.println("Already Taken");
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawX(coordsArray[8][0],coordsArray[8][1]);
+        
+        movesArray[2][2] = 'x';
+        break;
+        
+        }
+        
+        
+    
+    
+    
+    }
+    
+  }
+
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  public static void compTurn(Turtle t, int turn)
+  {
+    
+    int goodValue = 1;
+    while (goodValue == 1)
+    {
+    int compMove = (int)((Math.random() * 9) + 1);
+    
+
+   switch (compMove)
+    {
+      case 1:
+        if (movesArray[0][0] == 'x' || movesArray[0][0] == 'o')
+        {
+        break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[0][0],coordsArray[0][1]);
+        
+        movesArray[0][0] = 'o';
+        break;
+        
+        }
+        
+        case 2:
+        if (movesArray[1][0] == 'x' || movesArray[1][0] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[1][0],coordsArray[1][1]);
+        
+        movesArray[1][0] = 'o';
+        break;
+        
+        }
+        
+        case 3:
+        if (movesArray[2][0] == 'x' || movesArray[2][0] != 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[2][0],coordsArray[2][1]);
+        
+        movesArray[2][0] = 'o';
+        break;
+        
+        }
+        
+        case 4:
+        if (movesArray[0][1] == 'x' || movesArray[0][1] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[3][0],coordsArray[3][1]);
+        
+        movesArray[0][1] = 'o';
+        break;
+        
+        }
+        
+        case 5:
+        if (movesArray[1][1] == 'x' || movesArray[1][1] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[4][0],coordsArray[4][1]);
+        
+        movesArray[1][1] = 'o';
+        break;
+        
+        }
+        
+        case 6:
+        if (movesArray[2][1] == 'x' || movesArray[2][1] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[5][0],coordsArray[5][1]);
+        
+        movesArray[2][1] = 'o';
+        break;
+        
+        }
+        
+        case 7:
+        if (movesArray[0][2] == 'x' || movesArray[0][2] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[6][0],coordsArray[6][1]);
+        
+        movesArray[0][2] = 'o';
+        break;
+        
+        }
+        
+        case 8:
+        if (movesArray[1][2] == 'x' || movesArray[1][2] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[7][0],coordsArray[7][1]);
+        
+        movesArray[1][2] = 'o';
+        break;
+        
+        }
+        case 9:
+        if (movesArray[2][2] == 'x' || movesArray[2][2] == 'o')
+        {
+          break;
+      }
+        else
+        {
+       goodValue = 2;
+        t.drawHexagon(coordsArray[8][0],coordsArray[8][1]);
+        
+        movesArray[2][2] = 'o';
+        break;
+        
+        }
+        
+        
+    }
+    
+    
+    }
+
+
+    
+  }
+  
+  
+  
+  
+  public static void printAvailable()
+  {
+    System.out.print("The open spaces are... ");
+
+        if (movesArray[0][0] == 'x' || movesArray[0][0] == 'o')
+        {
+        System.out.print("-,");
+      }
+        else
+        {
+       System.out.print("1,");
+        
+        }
+        
+        
+        if (movesArray[1][0] == 'x' || movesArray[1][0] == 'o')
+        {
+          System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 2,");
+        
+        }
+        
+
+        if (movesArray[2][0] == 'x' || movesArray[2][0] == 'o')
+        {
+        System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 3,");
+        
+        }
+        
+
+        if (movesArray[0][1] == 'x' || movesArray[0][1] == 'o')
+        {
+          System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 4,");
+        
+        }
+
+        if (movesArray[1][1] == 'x' || movesArray[1][1] == 'o')
+        {
+          System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 5,");
+        
+        }
+        
+
+        if (movesArray[2][1] == 'x' || movesArray[2][1] == 'o')
+        {
+           System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 6,");
+        
+        }
+        
+
+        if (movesArray[0][2] == 'x' || movesArray[0][2] == 'o')
+        {
+          System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 7,");
+        
+        }
+
+        if (movesArray[1][2] == 'x' || movesArray[1][2] == 'o')
+        {
+          System.out.print("-,");
+      }
+        else
+        {
+       System.out.print(" 8,");
+        
+        }
+
+        if (movesArray[2][2] == 'x' || movesArray[2][2] == 'o')
+        {
+          System.out.print("-.");
+      }
+        else
+        {
+       System.out.print(" 9.");
+    
+    
+  }
+  }
+  
+  
+  
+  public static boolean whoWon(Turtle t) throws InterruptedException
+  {
+    int dist = 300;
+    int dist2 = 425;
+    if(movesArray[0][0] == 'x' && movesArray[0][1] == 'x' && movesArray[0][2] == 'x')
+    {
+      t.penUp();
+      t.moveTo(150,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(150,400);
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
       return true;
     }
-  }
-  
-  public static void animateLine(Turtle tom, int heading, int startX, int startY, int endX, int endY) throws InterruptedException
-  {
-    // setup to draw a line through winning row/col/diag
-    tom.show();
-    tom.penUp();
-    tom.moveTo(startX, startY);
-    tom.setHeading(heading);
-    tom.penDown();
-    tom.setPenWidth(4);
-    tom.setPenColor(Color.black);
-    int dist = (int)(Math.sqrt((startX-endX) * (startX-endX) + (startY-endY) * (startY-endY)));
-    
-    // animate drawing the line
-    for (int i = 0; i < dist/3; i++)
-    {
-      tom.forward(3);
+      if(movesArray[0][0] == 'x' && movesArray[1][1] == 'x' && movesArray[2][2] == 'x' )
+      {
+      t.penUp();
+      t.moveTo(100,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(400,400);
+      for (int i = 0; i< dist2/3; i++) {
+      t.forward(3);
       Thread.sleep(30);
-    }
-  }
-  
-  public static void fillCoords(World w)
-  {
-    
-    // getting the mathematical measurements of the divided world
-    int height = (int) (w.getHeight()/3);
-    int heightDoubled = (int) (w.getHeight()/3 + w.getHeight()/3);
-    int width = (int) (w.getWidth()/3);
-    int widthDoubled = (int) (w.getWidth()/3 + w.getWidth()/3);
-    
-    // Space 1
-    coordsArray[0][0] = 0;
-    coordsArray[0][1] = 0;
-    
-    // Space 2
-    coordsArray[1][0] = width;
-    coordsArray[1][1] = 0;
-    
-    // Space 3
-    coordsArray[2][0] = widthDoubled;
-    coordsArray[2][1] = 0;
-    
-    // Space 4
-    coordsArray[3][0] = 0;
-    coordsArray[3][1] = height;
-    
-    // Space 5
-    coordsArray[4][0] = width;
-    coordsArray[4][1] = height;
-    
-    // Space 6
-    coordsArray[5][0] = widthDoubled;
-    coordsArray[5][1] = height;
-    
-    // Space 7
-    coordsArray[6][0] = 0;
-    coordsArray[6][1] = heightDoubled;
-    
-    // Space 8
-    coordsArray[7][0] = width;
-    coordsArray[7][1] = heightDoubled;
-    
-    // Space 9
-    coordsArray[8][0] = widthDoubled;
-    coordsArray[8][1] = heightDoubled;
-  }
-  
-  public int jarvisReRoll()
-  {
-    int jarvisNumber = (int)(Math.random()*10);
-    
-    if (jarvisNumber > 9 || jarvisNumber < 1)
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true;
+      }
+        
+      if(movesArray[0][0] == 'x' && movesArray[1][0] == 'x' && movesArray[2][0] == 'x' )
+      {
+      t.penUp();
+      t.moveTo(100,150);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(400,150);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true; 
+      }
+        
+      if(movesArray[1][0] == 'x' && movesArray[1][1] == 'x' && movesArray[1][2] == 'x')
+      {
+      t.penUp();
+      t.moveTo(250,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(250,400);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true;
+      }
+      
+      if(movesArray[2][0] == 'x' && movesArray[1][1] == 'x' && movesArray[0][2] == 'x')
+      {
+      t.penUp();
+      t.moveTo(400,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(100,400);
+      for (int i = 0; i< dist2/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true;
+      }
+      if(movesArray[2][0] == 'x' && movesArray[2][1] == 'x' && movesArray[2][2] == 'x')
+      {
+      t.penUp();
+      t.moveTo(350,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(350,400);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true; 
+      }
+      if(movesArray[0][1] == 'x' && movesArray[1][1] == 'x' && movesArray[2][1] == 'x')
+      {
+      t.penUp();
+      t.moveTo(250,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(250,400);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true;
+      }
+      if(movesArray[0][2] == 'x' && movesArray[1][2] == 'x' && movesArray[2][2] == 'x')
     {
-      jarvisNumber = (int)(Math.random()*10);
-    }
+      t.penUp();
+      t.moveTo(100,350);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(400,350);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("USER WINS!!!!!");
+      return true;
     
-    return jarvisNumber;
+    
   }
+  
+  
+  if(movesArray[0][0] == 'o' && movesArray[0][1] == 'o' && movesArray[0][2] == 'o')
+    {
+      t.penUp();
+      t.moveTo(150,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(150,400);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true;
+    }
+      if(movesArray[0][0] == 'o' && movesArray[1][1] == 'o' && movesArray[2][2] == 'o' )
+      {
+      t.penUp();
+      t.moveTo(100,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(400,400);
+      for (int i = 0; i< dist2/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true;
+      }
+        
+      if(movesArray[0][0] == 'o' && movesArray[1][0] == 'o' && movesArray[2][0] == 'o' )
+      {
+      t.penUp();
+      t.moveTo(100,150);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(400,150);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true; 
+      }
+        
+      if(movesArray[1][0] == 'o' && movesArray[1][1] == 'o' && movesArray[1][2] == 'o')
+      {
+      t.penUp();
+      t.moveTo(250,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(250,400);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true;
+      }
+      
+      if(movesArray[2][0] == 'o' && movesArray[1][1] == 'o' && movesArray[0][2] == 'o')
+      {
+      t.penUp();
+      t.moveTo(400,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(100,400);
+      for (int i = 0; i< dist2/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true;
+      }
+      if(movesArray[2][0] == 'o' && movesArray[2][1] == 'o' && movesArray[2][2] == 'o')
+      {
+      t.penUp();
+      t.moveTo(350,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(350,400);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true; 
+      }
+      if(movesArray[0][1] == 'o' && movesArray[1][1] == 'o' && movesArray[2][1] == 'o')
+      {
+      t.penUp();
+      t.moveTo(250,100);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(250,400);
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true;
+      }
+      if(movesArray[0][2] == 'o' && movesArray[1][2] == 'o' && movesArray[2][2] == 'o')
+    {
+      t.penUp();
+      t.moveTo(100,350);
+      t.setPenWidth(3);
+      t.penDown();
+      t.turnToFace(400,350);
+      for (int i = 0; i< dist/3; i++) {
+      t.forward(3);
+      Thread.sleep(30);
+      }
+      t.penUp();
+      System.out.println("COMPUTER WINS!!!!!");
+      return true;
+    
+    
+  }
+  
+  return false;
+  }
+  
+
+  
   
 }
